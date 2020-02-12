@@ -7,7 +7,11 @@ services:
     tty: true
     command: >
       bash -c "cd /src &&
+      pip install mysql-connector-python &&
+      python /src/MySQLConnector.py &&
       python /src/main.py"
+    links:
+      - db
   db:
     image: mysql:5.7
     environment:
